@@ -1,0 +1,127 @@
+.container {
+    perspective: 1500px;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .buttons, .result-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cube {
+    position: relative;
+    transform-style: preserve-3d;
+    width: 300px;
+    height: 300px;
+    transition: all .75s ease-out;
+    margin: 0 100px;
+  }
+  
+  /* .slanted-face {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  } */
+  
+  .one-face {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  
+  .one-again-face {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg);
+  }
+  
+  .two-face {
+    transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+  }
+  
+  .two-again-face {
+    transform: rotateX(450deg) rotateY(360deg) rotateZ(0deg);
+  }
+  
+  .three-face {
+    transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  }
+  
+  .three-again-face {
+    transform: rotateX(360deg) rotateY(450deg) rotateZ(0deg);
+  }
+  
+  .four-face {
+    transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
+  }
+  
+  .four-again-face {
+    transform: rotateX(360deg) rotateY(-450deg) rotateZ(0deg);
+  }
+  
+  .five-face {
+    transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+  }
+  
+  .five-again-face {
+    transform: rotateX(-450deg) rotateY(360deg) rotateZ(0deg);
+  }
+  
+  .six-face {
+    transform: rotateX(0deg) rotateY(180deg) rotateZ(0deg);
+  }
+  
+  .six-again-face {
+    transform: rotateX(360deg) rotateY(540deg) rotateZ(0deg);
+  }
+  
+  /* .container:hover .cube {
+    transform: rotateX(360deg) rotateY(180deg) rotateZ(0deg);
+  } */
+  
+  .face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background-color: lightblue;
+    border: 1px solid teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+  /*   opacity: .6; */
+  }
+  
+  .front {
+    transform: rotateY(0deg) translateZ(150px);
+  }
+  
+  .back {
+    transform: rotateY(180deg) translateZ(150px);
+  }
+  
+  .bottom {
+    transform: rotateX(-90deg) translateZ(150px);
+  }
+  
+  .left {
+    transform: rotateY(-90deg) translateZ(150px);
+  }
+  
+  .right {
+    transform: rotateY(90deg) translateZ(150px);
+  }
+  
+  .top {
+    transform: rotateX(90deg) translateZ(150px);
+  }
+  
+  button {
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  button:hover {
+    cursor: pointer;
+  }
+  
+  
