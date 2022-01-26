@@ -1,95 +1,62 @@
-let cubeOne = document.querySelector(".cube-one");
-let cubeTwo = document.querySelector(".cube-two");
+const cubeOne = $(".cube-one");
+const cubeTwo = $(".cube-two");
+const classes = ["slanted face", "one-face", "one-face-again", "two-face", "two-face-again", "three-face", "three-face-again", "four-face", "four-face-again", "five-face", "five-face-again", "six-face", "six-face-again"];
 let roll1 = 0;
 let roll2 = 0;
 
-// document.querySelector(".one").onclick = function() {
-//   rollOne();
-//   total = 1;
-//   showTotal();
-// };
-
-// document.querySelector(".two").onclick = function() {
-//   rollTwo();
-//   total = 2;
-//   showTotal();
-// };
-
-// document.querySelector(".three").onclick = function() {
-//   rollThree();
-//   total = 3;
-//   showTotal();
-// };
-
-// document.querySelector(".four").onclick = function() {
-//   rollFour();
-//   total = 4;
-//   showTotal();
-// };
-
-// document.querySelector(".five").onclick = function() {
-//   rollFive();
-//   total = 5;
-//   showTotal();
-// };
-
-// document.querySelector(".six").onclick = function() {
-//   rollSix();
-//   total = 6;
-//   showTotal();
-// };
-
 function showTotal() {
-  console.log(roll1);
-  console.log(roll2);
-  let totalText = document.querySelector(".total");
+  const totalText = $(".total");
   setTimeout(function(){
- 	totalText.textContent = roll1 + roll2;
+ 	totalText.text(roll1 + roll2);
   }, 750);
 }
 
 function removeClassesOne() {
-  cubeOne.classList.remove("slanted-face");
-  cubeOne.classList.remove("one-face");
-  cubeOne.classList.remove("one-again-face");
-  cubeOne.classList.remove("two-face");
-  cubeOne.classList.remove("two-again-face");
-  cubeOne.classList.remove("three-face");
-  cubeOne.classList.remove("three-again-face");
-  cubeOne.classList.remove("four-face");
-  cubeOne.classList.remove("four-again-face");
-  cubeOne.classList.remove("five-face");
-  cubeOne.classList.remove("five-again-face");
-  cubeOne.classList.remove("six-face");
-  cubeOne.classList.remove("six-again-face");
+    $(cubeOne).removeClass();
+    $(cubeOne).addClass("cube cube-one");
+//   $(cubeOne).removeClass("slanted-face");
+//   $(cubeOne).removeClass("one-face");
+//   $(cubeOne).removeClass("one-again-face");
+//   $(cubeOne).removeClass("two-face");
+//   $(cubeOne).removeClass("two-again-face");
+//   $(cubeOne).removeClass("three-face");
+//   $(cubeOne).removeClass("three-again-face");
+//   $(cubeOne).removeClass("four-face");
+//   $(cubeOne).removeClass("four-again-face");
+//   $(cubeOne).removeClass("five-face");
+//   $(cubeOne).removeClass("five-again-face");
+//   $(cubeOne).removeClass("six-face");
+//   $(cubeOne).removeClass("six-again-face");
 }
 
 function removeClassesTwo() {
-  cubeTwo.classList.remove("slanted-face");
-  cubeTwo.classList.remove("one-face");
-  cubeTwo.classList.remove("one-again-face");
-  cubeTwo.classList.remove("two-face");
-  cubeTwo.classList.remove("two-again-face");
-  cubeTwo.classList.remove("three-face");
-  cubeTwo.classList.remove("three-again-face");
-  cubeTwo.classList.remove("four-face");
-  cubeTwo.classList.remove("four-again-face");
-  cubeTwo.classList.remove("five-face");
-  cubeTwo.classList.remove("five-again-face");
-  cubeTwo.classList.remove("six-face");
-  cubeTwo.classList.remove("six-again-face");
+    $(cubeTwo).removeClass();
+    $(cubeTwo).addClass("cube cube-two");
+//   $(cubeTwo).removeClass("slanted-face");
+//   $(cubeTwo).removeClass("one-face");
+//   $(cubeTwo).removeClass("one-again-face");
+//   $(cubeTwo).removeClass("two-face");
+//   $(cubeTwo).removeClass("two-again-face");
+//   $(cubeTwo).removeClass("three-face");
+//   $(cubeTwo).removeClass("three-again-face");
+//   $(cubeTwo).removeClass("four-face");
+//   $(cubeTwo).removeClass("four-again-face");
+//   $(cubeTwo).removeClass("five-face");
+//   $(cubeTwo).removeClass("five-again-face");
+//   $(cubeTwo).removeClass("six-face");
+//   $(cubeTwo).removeClass("six-again-face");
 }
 
 function rollOne() {
   let isRepeat = false;
-  if(cubeOne.classList.contains("one-face")) {
+  if($(cubeOne).hasClass("one-face")) {
     isRepeat = true;
   };
   removeClassesOne();
-  if (isRepeat === true && !cubeOne.classList.contains("one-again-face")) {
-    cubeOne.classList.add("one-again-face");
+  if (isRepeat === true && !$(cubeOne).hasClass("one-again-face")) {
+    $(cubeOne).addClass("one-again-face");
   } else {
-    cubeOne.classList.add("one-face");
+    $(cubeOne).addClass("one-face");
   }
   roll1 = 1;
   showTotal();
@@ -97,14 +64,14 @@ function rollOne() {
 
 function rollTwo() {
   let isRepeat = false;
-  if(cubeOne.classList.contains("two-face")) {
+  if($(cubeOne).hasClass("two-face")) {
     isRepeat = true;
   };
   removeClassesOne();
-  if (isRepeat === true && !cubeOne.classList.contains("two-again-face")) {
-    cubeOne.classList.add("two-again-face");
+  if (isRepeat === true && !$(cubeOne).hasClass("two-again-face")) {
+    $(cubeOne).addClass("two-again-face");
   } else {
-    cubeOne.classList.add("two-face");
+    $(cubeOne).addClass("two-face");
   }
   roll1 = 2;
   showTotal();
@@ -112,14 +79,14 @@ function rollTwo() {
 
 function rollThree() {
   let isRepeat = false;
-  if(cubeOne.classList.contains("three-face")) {
+  if($(cubeOne).hasClass("three-face")) {
     isRepeat = true;
   };
   removeClassesOne();
-  if (isRepeat === true && !cubeOne.classList.contains("three-again-face")) {
-    cubeOne.classList.add("three-again-face");
+  if (isRepeat === true && !$(cubeOne).hasClass("three-again-face")) {
+    $(cubeOne).addClass("three-again-face");
   } else {
-    cubeOne.classList.add("three-face");
+    $(cubeOne).addClass("three-face");
   }
   roll1 = 3;
   showTotal();
@@ -127,14 +94,14 @@ function rollThree() {
 
 function rollFour() {
   let isRepeat = false;
-  if(cubeOne.classList.contains("four-face")) {
+  if($(cubeOne).hasClass("four-face")) {
     isRepeat = true;
   };
   removeClassesOne();
-  if (isRepeat === true && !cubeOne.classList.contains("four-again-face")) {
-    cubeOne.classList.add("four-again-face");
+  if (isRepeat === true && !$(cubeOne).hasClass("four-again-face")) {
+    $(cubeOne).addClass("four-again-face");
   } else {
-    cubeOne.classList.add("four-face");
+    $(cubeOne).addClass("four-face");
   }
   roll1 = 4;
   showTotal();
@@ -142,14 +109,14 @@ function rollFour() {
 
 function rollFive() {
   let isRepeat = false;
-  if(cubeOne.classList.contains("five-face")) {
+  if($(cubeOne).hasClass("five-face")) {
     isRepeat = true;
   };
   removeClassesOne();
-  if (isRepeat === true && !cubeOne.classList.contains("five-again-face")) {
-    cubeOne.classList.add("five-again-face");
+  if (isRepeat === true && !$(cubeOne).hasClass("five-again-face")) {
+    $(cubeOne).addClass("five-again-face");
   } else {
-    cubeOne.classList.add("five-face");
+    $(cubeOne).addClass("five-face");
   }
   roll1 = 5;
   showTotal();
@@ -157,14 +124,14 @@ function rollFive() {
 
 function rollSix() {
   let isRepeat = false;
-  if(cubeOne.classList.contains("six-face")) {
+  if($(cubeOne).hasClass("six-face")) {
     isRepeat = true;
   };
   removeClassesOne();
-  if (isRepeat === true && !cubeOne.classList.contains("six-again-face")) {
-    cubeOne.classList.add("six-again-face");
+  if (isRepeat === true && !$(cubeOne).hasClass("six-again-face")) {
+    $(cubeOne).addClass("six-again-face");
   } else {
-    cubeOne.classList.add("six-face");
+    $(cubeOne).addClass("six-face");
   }
   roll1 = 6;
   showTotal();
@@ -172,14 +139,14 @@ function rollSix() {
 
 function rollOneDos() {
   let isRepeat = false;
-  if(cubeTwo.classList.contains("one-face")) {
+  if($(cubeTwo).hasClass("one-face")) {
     isRepeat = true;
   };
   removeClassesTwo();
-  if (isRepeat === true && !cubeTwo.classList.contains("one-again-face")) {
-    cubeTwo.classList.add("one-again-face");
+  if (isRepeat === true && !$(cubeTwo).hasClass("one-again-face")) {
+    $(cubeTwo).addClass("one-again-face");
   } else {
-    cubeTwo.classList.add("one-face");
+    $(cubeTwo).addClass("one-face");
   }
   roll2 = 1;
   showTotal();
@@ -187,14 +154,14 @@ function rollOneDos() {
 
 function rollTwoDos() {
   let isRepeat = false;
-  if(cubeTwo.classList.contains("two-face")) {
+  if($(cubeTwo).hasClass("two-face")) {
     isRepeat = true;
   };
   removeClassesTwo();
-  if (isRepeat === true && !cubeTwo.classList.contains("two-again-face")) {
-    cubeTwo.classList.add("two-again-face");
+  if (isRepeat === true && !$(cubeTwo).hasClass("two-again-face")) {
+    $(cubeTwo).addClass("two-again-face");
   } else {
-    cubeTwo.classList.add("two-face");
+    $(cubeTwo).addClass("two-face");
   }
   roll2 = 2;
   showTotal();
@@ -202,14 +169,14 @@ function rollTwoDos() {
 
 function rollThreeDos() {
   let isRepeat = false;
-  if(cubeTwo.classList.contains("three-face")) {
+  if($(cubeTwo).hasClass("three-face")) {
     isRepeat = true;
   };
   removeClassesTwo();
-  if (isRepeat === true && !cubeTwo.classList.contains("three-again-face")) {
-    cubeTwo.classList.add("three-again-face");
+  if (isRepeat === true && !$(cubeTwo).hasClass("three-again-face")) {
+    $(cubeTwo).addClass("three-again-face");
   } else {
-    cubeTwo.classList.add("three-face");
+    $(cubeTwo).addClass("three-face");
   }
   roll2 = 3;
   showTotal();
@@ -217,14 +184,14 @@ function rollThreeDos() {
 
 function rollFourDos() {
   let isRepeat = false;
-  if(cubeTwo.classList.contains("four-face")) {
+  if($(cubeTwo).hasClass("four-face")) {
     isRepeat = true;
   };
   removeClassesTwo();
-  if (isRepeat === true && !cubeTwo.classList.contains("four-again-face")) {
-    cubeTwo.classList.add("four-again-face");
+  if (isRepeat === true && !$(cubeTwo).hasClass("four-again-face")) {
+    $(cubeTwo).addClass("four-again-face");
   } else {
-    cubeTwo.classList.add("four-face");
+    $(cubeTwo).addClass("four-face");
   }
   roll2 = 4;
   showTotal();
@@ -232,14 +199,14 @@ function rollFourDos() {
 
 function rollFiveDos() {
   let isRepeat = false;
-  if(cubeTwo.classList.contains("five-face")) {
+  if($(cubeTwo).hasClass("five-face")) {
     isRepeat = true;
   };
   removeClassesTwo();
-  if (isRepeat === true && !cubeTwo.classList.contains("five-again-face")) {
-    cubeTwo.classList.add("five-again-face");
+  if (isRepeat === true && !$(cubeTwo).hasClass("five-again-face")) {
+    $(cubeTwo).addClass("five-again-face");
   } else {
-    cubeTwo.classList.add("five-face");
+    $(cubeTwo).addClass("five-face");
   }
   roll2 = 5;
   showTotal();
@@ -247,14 +214,14 @@ function rollFiveDos() {
 
 function rollSixDos() {
   let isRepeat = false;
-  if(cubeTwo.classList.contains("six-face")) {
+  if($(cubeTwo).hasClass("six-face")) {
     isRepeat = true;
   };
   removeClassesTwo();
-  if (isRepeat === true && !cubeTwo.classList.contains("six-again-face")) {
-    cubeTwo.classList.add("six-again-face");
+  if (isRepeat === true && !$(cubeTwo).hasClass("six-again-face")) {
+    $(cubeTwo).addClass("six-again-face");
   } else {
-    cubeTwo.classList.add("six-face");
+    $(cubeTwo).addClass("six-face");
   }
   roll2 = 6;
   showTotal();
@@ -269,32 +236,26 @@ document.querySelector(".random").onclick = function() {
 
 function handleFirstRoll(firstRoll) {
   if (firstRoll == 1) {
-    console.log("first roll: " + firstRoll);
     rollOne();
     return;
   }
   if (firstRoll == 2) {
-    console.log("first roll: " + firstRoll);
     rollTwo();
     return;
   }
   if (firstRoll == 3) {
-    console.log("first roll: " + firstRoll);
     rollThree();
     return;
   }
   if (firstRoll == 4) {
-    console.log("first roll: " + firstRoll);
     rollFour();
     return;
   }
   if (firstRoll == 5) {
-    console.log("first roll: " + firstRoll);
     rollFive();
     return;
   }
   if (firstRoll == 6) {
-    console.log("first roll: " + firstRoll);
     rollSix();
     return;
   }
@@ -303,32 +264,26 @@ function handleFirstRoll(firstRoll) {
 
 function handleSecondRoll(secondRoll) {
   if (secondRoll == 1) {
-    console.log("second roll: " + secondRoll);
     rollOneDos();
     return;
   }
   if (secondRoll == 2) {
-    console.log("second roll: " + secondRoll);
     rollTwoDos();
     return;
   }
   if (secondRoll == 3) {
-    console.log("second roll: " + secondRoll);
     rollThreeDos();
     return;
   }
   if (secondRoll == 4) {
-    console.log("second roll: " + secondRoll);
     rollFourDos();
     return;
   }
   if (secondRoll == 5) {
-    console.log("second roll: " + secondRoll);
     rollFiveDos();
     return;
   }
   if (secondRoll == 6) {
-    console.log("second roll: " + secondRoll);
     rollSixDos();
     return;
   }

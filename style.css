@@ -1,82 +1,30 @@
+body {
+    font-family: sans-serif;
+}
+
 .container {
     perspective: 1500px;
     margin: 100px auto;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
-  .buttons, .result-container {
+.buttons, .result-container {
     display: flex;
     justify-content: center;
-  }
+}
   
-  .cube {
+.cube {
     position: relative;
     transform-style: preserve-3d;
     width: 300px;
     height: 300px;
     transition: all .75s ease-out;
     margin: 0 100px;
-  }
-  
-  /* .slanted-face {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  } */
-  
-  .one-face {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  }
-  
-  .one-again-face {
-    transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg);
-  }
-  
-  .two-face {
-    transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
-  }
-  
-  .two-again-face {
-    transform: rotateX(450deg) rotateY(360deg) rotateZ(0deg);
-  }
-  
-  .three-face {
-    transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
-  }
-  
-  .three-again-face {
-    transform: rotateX(360deg) rotateY(450deg) rotateZ(0deg);
-  }
-  
-  .four-face {
-    transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
-  }
-  
-  .four-again-face {
-    transform: rotateX(360deg) rotateY(-450deg) rotateZ(0deg);
-  }
-  
-  .five-face {
-    transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
-  }
-  
-  .five-again-face {
-    transform: rotateX(-450deg) rotateY(360deg) rotateZ(0deg);
-  }
-  
-  .six-face {
-    transform: rotateX(0deg) rotateY(180deg) rotateZ(0deg);
-  }
-  
-  .six-again-face {
-    transform: rotateX(360deg) rotateY(540deg) rotateZ(0deg);
-  }
-  
-  /* .container:hover .cube {
-    transform: rotateX(360deg) rotateY(180deg) rotateZ(0deg);
-  } */
-  
-  .face {
+}
+
+.face {
     position: absolute;
     top: 0;
     left: 0;
@@ -88,40 +36,99 @@
     justify-content: center;
     align-items: center;
     font-size: 100px;
-  /*   opacity: .6; */
-  }
+    /*   opacity: .6; */
+}
   
-  .front {
+.slanted-face-one {
+    transform: rotateX(-10deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.slanted-face-two {
+    transform: rotateX(-10deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.one-face {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.one-again-face {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg);
+}
+
+.two-face {
+    transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.two-again-face {
+    transform: rotateX(450deg) rotateY(360deg) rotateZ(0deg);
+}
+
+.three-face {
+    transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+}
+
+.three-again-face {
+    transform: rotateX(360deg) rotateY(450deg) rotateZ(0deg);
+}
+
+.four-face {
+    transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
+}
+
+.four-again-face {
+    transform: rotateX(360deg) rotateY(-450deg) rotateZ(0deg);
+}
+
+.five-face {
+    transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.five-again-face {
+    transform: rotateX(-450deg) rotateY(360deg) rotateZ(0deg);
+}
+
+.six-face {
+    transform: rotateX(0deg) rotateY(180deg) rotateZ(0deg);
+}
+
+.six-again-face {
+    transform: rotateX(360deg) rotateY(540deg) rotateZ(0deg);
+}
+
+/* .container:hover .cube {
+    transform: rotateX(360deg) rotateY(180deg) rotateZ(0deg);
+} */
+
+.front {
     transform: rotateY(0deg) translateZ(150px);
-  }
-  
-  .back {
+}
+
+.back {
     transform: rotateY(180deg) translateZ(150px);
-  }
-  
-  .bottom {
+}
+
+.bottom {
     transform: rotateX(-90deg) translateZ(150px);
-  }
-  
-  .left {
+}
+
+.left {
     transform: rotateY(-90deg) translateZ(150px);
-  }
-  
-  .right {
+}
+
+.right {
     transform: rotateY(90deg) translateZ(150px);
-  }
-  
-  .top {
+}
+
+.top {
     transform: rotateX(90deg) translateZ(150px);
-  }
-  
-  button {
+}
+
+button {
     padding: 10px;
     margin: 10px;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     cursor: pointer;
-  }
-  
-  
+}
+
