@@ -9,19 +9,55 @@ let roll2 = 0;
 let rollTime = 750;
 let modifier = 0;
 
-$(".dice-color").change(function(){
-    let diceColor = this.value;
-    $('.face').css('background-color', diceColor);
-});
+// $(".dice-color").change(function(){
+//     let diceColor = this.value;
+//     $('.face').css('background-color', diceColor);
+// });
 
-$(".number-color").change(function(){
-    let numberColor = this.value;
-    $('.face').css('color', numberColor);
-});
+// $(".number-color").change(function(){
+//     let numberColor = this.value;
+//     $('.face').css('color', numberColor);
+// });
 
 $(".modifier").change(function(){
     let newModifier = parseInt(this.value);
     modifier = newModifier;
+});
+
+$(".style").change(function(){
+    let style = this.value;
+    let backgroundColor = '';
+    let borderColor = '';
+    let numberColor = ''
+
+    if (style === "classic") {
+        backgroundColor = "black";
+        borderColor = "gray";
+        numberColor = "white";
+    }
+    if (style === "blurple") {
+        backgroundColor = "#370544";
+        borderColor = "#408dd9";
+        numberColor = "#408dd9";
+    }
+    if (style === "neon") {
+        backgroundColor = "#b7fddc";
+        borderColor = "#ce0167";
+        numberColor = "#ce0167";
+    }
+    if (style === "cool blues") {
+        backgroundColor = "#11003e";
+        borderColor = "#6ab7bc";
+        numberColor = "#6ab7bc";
+    }
+    if (style === "invisible") {
+        backgroundColor = "transparent";
+        borderColor = "black";
+        numberColor = "black";
+    }
+    $(".face").css('background-color', backgroundColor);
+    $(".face").css('border-color', borderColor);
+    $(".face").css('color', numberColor);
 });
 
 $(".roll-btn").click(function() {

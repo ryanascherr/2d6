@@ -26,25 +26,34 @@
           <div class="face top">5</div>
         </div>
     </div>
-    <select class="dice-color">
-        <option value="black">Black</option>
-        <option value="darkred">Dark Red</option>
-        <option value="darkgreen">Dark Green</option>
-    </select>
-    <select class="number-color">
-        <option value="white">White</option>
-        <option value="black">Black</option>
-        <option value="darkred">Dark Red</option>
-        <option value="darkgreen">Dark Green</option>
-    </select>
-    <label for="colorpicker" class="test">Color Picker:</label>
-    <input type="color" id="colorpicker" value="#0000ff">
-    <select class="modifier">
-        <option value="0">+0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-    </select>
+    <div class="customization">
+        <!-- <select class="dice-color">
+            <option value="black">Black</option>
+            <option value="darkred">Dark Red</option>
+            <option value="darkgreen">Dark Green</option>
+        </select>
+        <select class="number-color">
+            <option value="white">White</option>
+            <option value="black">Black</option>
+            <option value="darkred">Dark Red</option>
+            <option value="darkgreen">Dark Green</option>
+        </select>
+        <label for="colorpicker" class="test">Color Picker:</label>
+        <input type="color" id="colorpicker" value="#0000ff"> -->
+        <select class="style">
+            <option data-bgc="black" data-bc="gray" data-nc="white" value="classic">Classic</option>
+            <option data-bgc="#370544" data-bc="#408dd9" data-nc="#408dd9" value="blurple">Blurple</option>
+            <option data-bgc="#b7fddc" data-bc="#ce0167" data-nc="#ce0167" value="neon">Neon</option>
+            <option data-bgc="#11003e" data-bc="#6ab7bc" data-nc="#6ab7bc" value="cool blues">Cool Blues</option>
+            <option data-bgc="" data-bc="black" data-nc="black" value="invisible">Invisible</option>
+        </select>
+        <select class="modifier">
+            <option value="0">+0</option>
+            <option value="1">+1</option>
+            <option value="2">+2</option>
+            <option value="3">+3</option>
+        </select>
+    </div>
     <div class="button-container">
         <button class="roll-btn">Roll!</button>
     </div>

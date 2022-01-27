@@ -16,6 +16,15 @@ button:hover {
     cursor: pointer;
 }
 
+.customization {
+    display: flex;
+    justify-content: center;
+}
+
+.customization > * {
+    margin: 0 10px;
+}
+
 .container {
     perspective: 1500px;
     margin: 100px auto;
@@ -42,6 +51,21 @@ button:hover {
     background-color: black;
     border: 1px solid gray;
     color: white;
+    /* background-color: #b7fddc;
+    border: 1px solid #ce0167;
+    color: #ce0167; */
+    /* background-color: #0f1f02;
+    border: 1px solid #8f74e3;
+    color: #8f74e3; */
+    /* background-color: #1b082c;
+    border: 1px solid #e77cd9;
+    color: #e77cd9; */
+    /* background-color: #11003e;
+    border: 1px solid #6ab7bc;
+    color: #6ab7bc; */
+    /* background-color: #370544;
+    border: 1px solid #408dd9;
+    color: #408dd9; */
     display: flex;
     justify-content: center;
     align-items: center;
