@@ -7,6 +7,7 @@ let isDiceRolling = false;
 let roll1 = 0;
 let roll2 = 0;
 let rollTime = 750;
+let modifier = 0;
 
 $(".dice-color").change(function(){
     let diceColor = this.value;
@@ -16,6 +17,11 @@ $(".dice-color").change(function(){
 $(".number-color").change(function(){
     let numberColor = this.value;
     $('.face').css('color', numberColor);
+});
+
+$(".modifier").change(function(){
+    let newModifier = parseInt(this.value);
+    modifier = newModifier;
 });
 
 $(".roll-btn").click(function() {
@@ -56,7 +62,11 @@ function handleSecondRoll(secondRoll) {
 function showTotal() {
   const diceRollTotal = $(".total");
   setTimeout(function(){
- 	diceRollTotal.text(roll1 + roll2);
+    if (modifier == 0) {
+        diceRollTotal.text(roll1 + roll2);
+    } else {
+        diceRollTotal.text(`${roll1 + roll2} + ${modifier} = ${roll1 + roll2 + modifier}`);
+    }
   }, rollTime);
 }
 
