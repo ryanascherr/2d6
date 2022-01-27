@@ -7,15 +7,37 @@ let roll1 = 0;
 let roll2 = 0;
 let rollTime = 750;
 
+$(".dice-color").change(function(){
+    let diceColor = this.value;
+    $('.face').css('background-color', diceColor);
+});
+
+$(".number-color").change(function(){
+    let numberColor = this.value;
+    $('.face').css('color', numberColor);
+});
+
+// $(".roll-time").change(function(){
+//     let userRollTime = this.value;
+//     console.log(userRollTime);
+//     $('#cube-one').css('transition', rollTime);
+//     $('#cube-two').css('transition', rollTime);
+//     rollTime = userRollTime;
+// });
+
 $(".roll-btn").click(function() {
+    let firstRoll = Math.floor(Math.random() * 6 + 1);
+    let secondRoll = Math.floor(Math.random() * 6 + 1);
+    
     if (isDiceRolling) {
         return;
     }
-    let firstRoll = Math.floor(Math.random() * 6 + 1);
-    let secondRoll = Math.floor(Math.random() * 6 + 1);
+
     handleFirstRoll(firstRoll);
     handleSecondRoll(secondRoll);
+
     isDiceRolling = true;
+
     setTimeout(function(){
         isDiceRolling = false;
      }, rollTime);

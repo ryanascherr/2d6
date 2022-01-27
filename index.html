@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="cube cube-one two-face-low">
+        <div id="cube-one" class="cube cube-one two-face-low">
           <div class="face front">1</div>
           <div class="face back">6</div>
           <div class="face bottom">2</div>
@@ -17,7 +17,7 @@
           <div class="face right">4</div>
           <div class="face top">5</div>
         </div>
-        <div class="cube cube-two six-face-low">
+        <div id="cube-two" class="cube cube-two six-face-low">
           <div class="face front">1</div>
           <div class="face back">6</div>
           <div class="face bottom">2</div>
@@ -26,6 +26,21 @@
           <div class="face top">5</div>
         </div>
     </div>
+    <select class="dice-color">
+        <option value="black">Black</option>
+        <option value="darkred">Dark Red</option>
+        <option value="darkgreen">Dark Green</option>
+    </select>
+    <select class="number-color">
+        <option value="black">Black</option>
+        <option value="darkred">Dark Red</option>
+        <option value="darkgreen">Dark Green</option>
+    </select>
+    <!-- <select class="roll-time">
+        <option value="750">.75 Seconds</option>
+        <option value="1000">1 Second</option>
+        <option value="1500">1.5 Seconds</option>
+    </select> -->
     <div class="button-container">
         <button class="roll-btn">Roll!</button>
     </div>

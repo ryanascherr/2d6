@@ -1,3 +1,7 @@
+:root {
+    --dice-size: 50px;
+}
+
 body {
     font-family: sans-serif;
 }
@@ -5,6 +9,7 @@ body {
 button {
     padding: 10px;
     margin: 10px;
+    font-size: 32px;
 }
 
 button:hover {
@@ -22,26 +27,38 @@ button:hover {
 .cube {
     position: relative;
     transform-style: preserve-3d;
-    width: 300px;
-    height: 300px;
+    width: var(--dice-size);
+    height: var(--dice-size);
     transition: all .75s ease-out;
-    margin: 0 100px;
+    margin: 0 calc(var(--dice-size)/2);
 }
 
 .face {
     position: absolute;
     top: 0;
     left: 0;
-    width: 300px;
-    height: 300px;
+    width: var(--dice-size);
+    height: var(--dice-size);
     background-color: black;
     border: 1px solid gray;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 100px;
+    font-size: calc(var(--dice-size)/2);
     /*   opacity: .6; */
+}
+
+.black-dice {
+    background-color: black;
+}
+
+.dark-red-dice {
+    background-color: darkred;
+}
+
+.dark-green-dice {
+    background-color: darkgreen;
 }
 
 .button-container, .result-container {
@@ -102,26 +119,38 @@ button:hover {
 } */
 
 .front {
-    transform: rotateY(0deg) translateZ(150px);
+    transform: rotateY(0deg) translateZ(calc(var(--dice-size)/2));
 }
 
 .back {
-    transform: rotateY(180deg) translateZ(150px);
+    transform: rotateY(180deg) translateZ(calc(var(--dice-size)/2));
 }
 
 .bottom {
-    transform: rotateX(-90deg) translateZ(150px);
+    transform: rotateX(-90deg) translateZ(calc(var(--dice-size)/2));
 }
 
 .left {
-    transform: rotateY(-90deg) translateZ(150px);
+    transform: rotateY(-90deg) translateZ(calc(var(--dice-size)/2));
 }
 
 .right {
-    transform: rotateY(90deg) translateZ(150px);
+    transform: rotateY(90deg) translateZ(calc(var(--dice-size)/2));
 }
 
 .top {
-    transform: rotateX(90deg) translateZ(150px);
+    transform: rotateX(90deg) translateZ(calc(var(--dice-size)/2));
+}
+
+@media only screen and (min-width: 600px) {
+    body {
+        --dice-size: 150px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    body {
+        --dice-size: 300px;
+    }
 }
 
