@@ -2,17 +2,21 @@ body {
     font-family: sans-serif;
 }
 
+button {
+    padding: 10px;
+    margin: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 .container {
     perspective: 1500px;
     margin: 100px auto;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-  
-.buttons, .result-container {
-    display: flex;
-    justify-content: center;
 }
   
 .cube {
@@ -30,68 +34,66 @@ body {
     left: 0;
     width: 300px;
     height: 300px;
-    background-color: lightblue;
-    border: 1px solid teal;
+    background-color: black;
+    border: 1px solid gray;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 100px;
     /*   opacity: .6; */
 }
-  
-.slanted-face-one {
-    transform: rotateX(-10deg) rotateY(-10deg) rotateZ(0deg);
+
+.button-container, .result-container {
+    display: flex;
+    justify-content: center;
 }
 
-.slanted-face-two {
-    transform: rotateX(-10deg) rotateY(10deg) rotateZ(0deg);
-}
-
-.one-face {
+.one-face-low {
     transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
 }
 
-.one-again-face {
+.one-face-high {
     transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg);
 }
 
-.two-face {
+.two-face-low {
     transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
 }
 
-.two-again-face {
+.two-face-high {
     transform: rotateX(450deg) rotateY(360deg) rotateZ(0deg);
 }
 
-.three-face {
+.three-face-low {
     transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
 }
 
-.three-again-face {
+.three-face-high {
     transform: rotateX(360deg) rotateY(450deg) rotateZ(0deg);
 }
 
-.four-face {
+.four-face-low {
     transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
 }
 
-.four-again-face {
+.four-face-high {
     transform: rotateX(360deg) rotateY(-450deg) rotateZ(0deg);
 }
 
-.five-face {
+.five-face-low {
     transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
 }
 
-.five-again-face {
+.five-face-high {
     transform: rotateX(-450deg) rotateY(360deg) rotateZ(0deg);
 }
 
-.six-face {
+.six-face-low {
     transform: rotateX(0deg) rotateY(180deg) rotateZ(0deg);
 }
 
-.six-again-face {
+.six-face-high {
     transform: rotateX(360deg) rotateY(540deg) rotateZ(0deg);
 }
 
@@ -121,14 +123,5 @@ body {
 
 .top {
     transform: rotateX(90deg) translateZ(150px);
-}
-
-button {
-    padding: 10px;
-    margin: 10px;
-}
-
-button:hover {
-    cursor: pointer;
 }
 
