@@ -1,5 +1,6 @@
 const cubeOne = $(".cube-one");
 const cubeTwo = $(".cube-two");
+
 let isDiceOneLow = true;
 let isDiceTwoLow = true;
 let isDiceRolling = false;
@@ -16,14 +17,6 @@ $(".number-color").change(function(){
     let numberColor = this.value;
     $('.face').css('color', numberColor);
 });
-
-// $(".roll-time").change(function(){
-//     let userRollTime = this.value;
-//     console.log(userRollTime);
-//     $('#cube-one').css('transition', rollTime);
-//     $('#cube-two').css('transition', rollTime);
-//     rollTime = userRollTime;
-// });
 
 $(".roll-btn").click(function() {
     let firstRoll = Math.floor(Math.random() * 6 + 1);
@@ -45,59 +38,19 @@ $(".roll-btn").click(function() {
 })
 
 function handleFirstRoll(firstRoll) {
-    if (firstRoll == 1) {
-      diceOneDisplayOne();
-      return;
-    }
-    if (firstRoll == 2) {
-      diceOneDisplayTwo();
-      return;
-    }
-    if (firstRoll == 3) {
-      diceOneDisplayThree();
-      return;
-    }
-    if (firstRoll == 4) {
-      diceOneDisplayFour();
-      return;
-    }
-    if (firstRoll == 5) {
-      diceOneDisplayFive();
-      return;
-    }
-    if (firstRoll == 6) {
-      diceOneDisplaySix();
-      return;
-    }
-    return;
-  }
+    return (firstRoll == 1) ? diceOneDisplayOne() : (firstRoll == 2) ? diceOneDisplayTwo() :
+    (firstRoll == 3) ? diceOneDisplayThree() :
+    (firstRoll == 4) ? diceOneDisplayFour() :
+    (firstRoll == 5) ? diceOneDisplayFive() :
+    diceOneDisplaySix();
+}
   
 function handleSecondRoll(secondRoll) {
-if (secondRoll == 1) {
-    diceTwoDisplayOne();
-    return;
-}
-if (secondRoll == 2) {
-    diceTwoDisplayTwo();
-    return;
-}
-if (secondRoll == 3) {
-    diceTwoDisplayThree();
-    return;
-}
-if (secondRoll == 4) {
-    diceTwoDisplayFour();
-    return;
-}
-if (secondRoll == 5) {
-    diceTwoDisplayFive();
-    return;
-}
-if (secondRoll == 6) {
+    return (secondRoll == 1) ? diceTwoDisplayOne() : (secondRoll == 2) ? diceTwoDisplayTwo() :
+    (secondRoll == 3) ? diceTwoDisplayThree() :
+    (secondRoll == 4) ? diceTwoDisplayFour() :
+    (secondRoll == 5) ? diceTwoDisplayFive() :
     diceTwoDisplaySix();
-    return;
-}
-return;
 }
 
 function showTotal() {

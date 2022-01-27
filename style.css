@@ -46,7 +46,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     font-size: calc(var(--dice-size)/2);
-    /*   opacity: .6; */
+    /* opacity: .6; */
 }
 
 .black-dice {
