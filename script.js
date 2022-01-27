@@ -2,14 +2,24 @@ const cubeOne = $(".cube-one");
 const cubeTwo = $(".cube-two");
 let isDiceOneLow = true;
 let isDiceTwoLow = true;
+let isDiceRolling = false;
 let roll1 = 0;
 let roll2 = 0;
+let rollTime = 750;
 
 $(".roll-btn").click(function() {
+    if (isDiceRolling) {
+        return;
+    }
     let firstRoll = Math.floor(Math.random() * 6 + 1);
     let secondRoll = Math.floor(Math.random() * 6 + 1);
     handleFirstRoll(firstRoll);
     handleSecondRoll(secondRoll);
+    isDiceRolling = true;
+    setTimeout(function(){
+        isDiceRolling = false;
+     }, rollTime);
+
 })
 
 function handleFirstRoll(firstRoll) {
@@ -69,11 +79,10 @@ return;
 }
 
 function showTotal() {
-    console.log("hey");
   const diceRollTotal = $(".total");
   setTimeout(function(){
  	diceRollTotal.text(roll1 + roll2);
-  }, 750);
+  }, rollTime);
 }
 
 function removeClassesOne() {
