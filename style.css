@@ -8,11 +8,15 @@ body {
 }
 
 select {
+    background-color: white;
+    color: black;
+    padding: 2.5px;
     border: 2px solid black;
+    font-size: var(--font-size)
 }
 
 .result-container {
-    font-size: 12px;
+    font-size: var(--font-size);
 }
 
 button {
@@ -24,6 +28,7 @@ button {
 
 .button-container {
     margin: 20px 0 0;
+
 }
 
 button:hover {
@@ -42,7 +47,7 @@ button:active {
 }
 
 .customization {
-    width: 200px;
+    max-width: 300px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -50,8 +55,7 @@ button:active {
 }
 
 .customization > * {
-    margin: 0 5px;
-    /* font-size: 20px; */
+    margin: 2.5px 0;
     padding: 5px;
     display: flex;
 }
@@ -184,12 +188,30 @@ button:active {
 @media only screen and (min-width: 600px) {
     body {
         --dice-size: 100px;
+        --font-size: 20px;
+    }
+
+    .container {
+        margin: 60px auto;
+    }
+
+    .customization > * {
+        margin: 5px 0;
     }
 }
 
 @media only screen and (min-width: 1200px) {
     body {
         --dice-size: 200px;
+        --font-size: 26px;
+    }
+
+    .container {
+        margin: 70px auto;
+    }
+
+    .customization > * {
+        margin: 10px 0;
     }
 }
 
