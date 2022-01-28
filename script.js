@@ -9,21 +9,6 @@ let roll2 = 0;
 let rollTime = 750;
 let modifier = 0;
 
-// $(".dice-color").change(function(){
-//     let diceColor = this.value;
-//     $('.face').css('background-color', diceColor);
-// });
-
-// $(".number-color").change(function(){
-//     let numberColor = this.value;
-//     $('.face').css('color', numberColor);
-// });
-
-$(".modifier").change(function(){
-    let newModifier = parseInt(this.value);
-    modifier = newModifier;
-});
-
 $(".style").change(function(){
     let style = this.value;
     let backgroundColor = '';
@@ -60,287 +45,72 @@ $(".style").change(function(){
     $(".face").css('color', numberColor);
 });
 
+$(".modifier").change(function(){
+    let newModifier = parseInt(this.value);
+    modifier = newModifier;
+});
+
 $(".roll-btn").click(function() {
-    let firstRoll = Math.floor(Math.random() * 6 + 1);
-    let secondRoll = Math.floor(Math.random() * 6 + 1);
-    
+    //Does not allow user to roll while a roll is currently happening
     if (isDiceRolling) {
         return;
     }
-
-    handleFirstRoll(firstRoll);
-    handleSecondRoll(secondRoll);
 
     isDiceRolling = true;
 
     setTimeout(function(){
         isDiceRolling = false;
-     }, rollTime);
+    }, rollTime);
 
+    roll1 = Math.floor(Math.random() * 6 + 1);
+    roll2 = Math.floor(Math.random() * 6 + 1);
+
+    resetClasses();
+    rollDiceOne();
+    rollDiceTwo();
+    showResult();
 })
 
-function handleFirstRoll(firstRoll) {
-    return (firstRoll == 1) ? diceOneDisplayOne() : (firstRoll == 2) ? diceOneDisplayTwo() :
-    (firstRoll == 3) ? diceOneDisplayThree() :
-    (firstRoll == 4) ? diceOneDisplayFour() :
-    (firstRoll == 5) ? diceOneDisplayFive() :
-    diceOneDisplaySix();
-}
-  
-function handleSecondRoll(secondRoll) {
-    return (secondRoll == 1) ? diceTwoDisplayOne() : (secondRoll == 2) ? diceTwoDisplayTwo() :
-    (secondRoll == 3) ? diceTwoDisplayThree() :
-    (secondRoll == 4) ? diceTwoDisplayFour() :
-    (secondRoll == 5) ? diceTwoDisplayFive() :
-    diceTwoDisplaySix();
-}
-
-function showTotal() {
-  const diceRollTotal = $(".total");
-  setTimeout(function(){
-    if (modifier == 0) {
-        diceRollTotal.text(roll1 + roll2);
-    } else {
-        diceRollTotal.text(`${roll1 + roll2} + ${modifier} = ${roll1 + roll2 + modifier}`);
-    }
-  }, rollTime);
-}
-
-function removeClassesOne() {
+function resetClasses() {
     $(cubeOne).removeClass();
     $(cubeOne).addClass("cube cube-one");
-}
-
-function removeClassesTwo() {
     $(cubeTwo).removeClass();
     $(cubeTwo).addClass("cube cube-two");
 }
 
-function diceOneDisplayOne() {
-
-    removeClassesOne();
-
-    roll1 = 1;
-
-    showTotal();
+function rollDiceOne() {
+    let numberAsString = JSON.stringify(roll1);
 
     if (isDiceOneLow) {
-        $(cubeOne).addClass("one-face-high");
+        $(cubeOne).addClass(`face-${numberAsString}-high`);
         isDiceOneLow = false;
         return;
     }
-    if (!isDiceOneLow) {
-        $(cubeOne).addClass("one-face-low");
-        isDiceOneLow = true;
-        return;
-    }
+
+    $(cubeOne).addClass(`face-${numberAsString}-low`);
+    isDiceOneLow = true;
 }
 
-function diceOneDisplayTwo() {
-    removeClassesOne();
-
-    roll1 = 2;
-
-    showTotal();
-
-    if (isDiceOneLow) {
-        $(cubeOne).addClass("two-face-high");
-        isDiceOneLow = false;
-        return;
-    }
-    if (!isDiceOneLow) {
-        $(cubeOne).addClass("two-face-low");
-        isDiceOneLow = true;
-        return;
-    }
-}
-
-function diceOneDisplayThree() {
-    removeClassesOne();
-
-    roll1 = 3;
-
-    showTotal();
-
-    if (isDiceOneLow) {
-        $(cubeOne).addClass("three-face-high");
-        isDiceOneLow = false;
-        return;
-    }
-    if (!isDiceOneLow) {
-        $(cubeOne).addClass("three-face-low");
-        isDiceOneLow = true;
-        return;
-    }
-}
-
-function diceOneDisplayFour() {
-    removeClassesOne();
-
-    roll1 = 4;
-
-    showTotal();
-
-    if (isDiceOneLow) {
-        $(cubeOne).addClass("four-face-high");
-        isDiceOneLow = false;
-        return;
-    }
-    if (!isDiceOneLow) {
-        $(cubeOne).addClass("four-face-low");
-        isDiceOneLow = true;
-        return;
-    }
-}
-
-function diceOneDisplayFive() {
-    removeClassesOne();
-
-    roll1 = 5;
-
-    showTotal();
-
-    if (isDiceOneLow) {
-        $(cubeOne).addClass("five-face-high");
-        isDiceOneLow = false;
-        return;
-    }
-    if (!isDiceOneLow) {
-        $(cubeOne).addClass("five-face-low");
-        isDiceOneLow = true;
-        return;
-    }
-}
-
-function diceOneDisplaySix() {
-    removeClassesOne();
-
-    roll1 = 6;
-
-    showTotal();
-
-    if (isDiceOneLow) {
-        $(cubeOne).addClass("six-face-high");
-        isDiceOneLow = false;
-        return;
-    }
-    if (!isDiceOneLow) {
-        $(cubeOne).addClass("six-face-low");
-        isDiceOneLow = true;
-        return;
-    }
-}
-
-function diceTwoDisplayOne() {
-    removeClassesTwo();
-
-    roll2 = 1;
-
-    showTotal();
+function rollDiceTwo() {
+    let numberAsString = JSON.stringify(roll2);
 
     if (isDiceTwoLow) {
-        $(cubeTwo).addClass("one-face-high");
+        $(cubeTwo).addClass(`face-${numberAsString}-high`);
         isDiceTwoLow = false;
         return;
     }
-    if (!isDiceTwoLow) {
-        $(cubeTwo).addClass("one-face-low");
-        isDiceTwoLow = true;
-        return;
-    }
+
+    $(cubeTwo).addClass(`face-${numberAsString}-low`);
+    isDiceTwoLow = true;
 }
 
-function diceTwoDisplayTwo() {
-    removeClassesTwo();
-
-    roll2 = 2;
-
-    showTotal();
-
-    if (isDiceTwoLow) {
-        $(cubeTwo).addClass("two-face-high");
-        isDiceTwoLow = false;
-        return;
-    }
-    if (!isDiceTwoLow) {
-        $(cubeTwo).addClass("two-face-low");
-        isDiceTwoLow = true;
-        return;
-    }
-}
-
-function diceTwoDisplayThree() {
-    removeClassesTwo();
-
-    roll2 = 3;
-
-    showTotal();
-
-    if (isDiceTwoLow) {
-        $(cubeTwo).addClass("three-face-high");
-        isDiceTwoLow = false;
-        return;
-    }
-    if (!isDiceTwoLow) {
-        $(cubeTwo).addClass("three-face-low");
-        isDiceTwoLow = true;
-        return;
-    }
-}
-
-function diceTwoDisplayFour() {
-    removeClassesTwo();
-
-    roll2 = 4;
-
-    showTotal();
-
-    if (isDiceTwoLow) {
-        $(cubeTwo).addClass("four-face-high");
-        isDiceTwoLow = false;
-        return;
-    }
-    if (!isDiceTwoLow) {
-        $(cubeTwo).addClass("four-face-low");
-        isDiceTwoLow = true;
-        return;
-    }
-}
-
-function diceTwoDisplayFive() {
-    removeClassesTwo();
-
-    roll2 = 5;
-
-    showTotal();
-
-    if (isDiceTwoLow) {
-        $(cubeTwo).addClass("five-face-high");
-        isDiceTwoLow = false;
-        return;
-    }
-    if (!isDiceTwoLow) {
-        $(cubeTwo).addClass("five-face-low");
-        isDiceTwoLow = true;
-        return;
-    }
-}
-
-function diceTwoDisplaySix() {
-    removeClassesTwo();
-
-    roll2 = 6;
-
-    showTotal();
-
-    if (isDiceTwoLow) {
-        $(cubeTwo).addClass("six-face-high");
-        isDiceTwoLow = false;
-        return;
-    }
-    if (!isDiceTwoLow) {
-        $(cubeTwo).addClass("six-face-low");
-        isDiceTwoLow = true;
-        return;
-    }
+function showResult() {
+    const diceRollTotal = $(".total");
+    setTimeout(function(){
+      if (modifier == 0) {
+          diceRollTotal.text(roll1 + roll2);
+      } else {
+          diceRollTotal.text(`${roll1 + roll2} + ${modifier} = ${roll1 + roll2 + modifier}`);
+      }
+    }, rollTime);
 }

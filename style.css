@@ -111,57 +111,53 @@ button:active {
     justify-content: center;
 }
 
-.one-face-low {
+.face-1-low {
     transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
 }
 
-.one-face-high {
+.face-1-high {
     transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg);
 }
 
-.two-face-low {
+.face-2-low {
     transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
 }
 
-.two-face-high {
+.face-2-high {
     transform: rotateX(450deg) rotateY(360deg) rotateZ(0deg);
 }
 
-.three-face-low {
+.face-3-low {
     transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
 }
 
-.three-face-high {
+.face-3-high {
     transform: rotateX(360deg) rotateY(450deg) rotateZ(0deg);
 }
 
-.four-face-low {
+.face-4-low {
     transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
 }
 
-.four-face-high {
+.face-4-high {
     transform: rotateX(360deg) rotateY(-450deg) rotateZ(0deg);
 }
 
-.five-face-low {
+.face-5-low {
     transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
 }
 
-.five-face-high {
+.face-5-high {
     transform: rotateX(-450deg) rotateY(360deg) rotateZ(0deg);
 }
 
-.six-face-low {
+.face-6-low {
     transform: rotateX(0deg) rotateY(180deg) rotateZ(0deg);
 }
 
-.six-face-high {
+.face-6-high {
     transform: rotateX(360deg) rotateY(540deg) rotateZ(0deg);
 }
-
-/* .container:hover .cube {
-    transform: rotateX(360deg) rotateY(180deg) rotateZ(0deg);
-} */
 
 .front {
     transform: rotateY(0deg) translateZ(calc(var(--dice-size)/2));
