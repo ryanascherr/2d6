@@ -24,6 +24,8 @@ button {
     font-size: var(--font-size);
     background-color: white;
     border: 2px solid black;
+    color: black;
+    border-radius: 10px;
 }
 
 .button-container {
