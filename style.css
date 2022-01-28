@@ -1,33 +1,64 @@
 :root {
     --dice-size: 50px;
+    --font-size: 16px;
 }
 
 body {
     font-family: sans-serif;
 }
 
+select {
+    border: 2px solid black;
+}
+
+.result-container {
+    font-size: 12px;
+}
+
 button {
     padding: 10px;
-    margin: 10px;
-    font-size: 32px;
+    font-size: var(--font-size);
+    background-color: white;
+    border: 2px solid black;
+}
+
+.button-container {
+    margin: 20px 0 0;
 }
 
 button:hover {
     cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 5px 5px 5px gray;
+}
+
+button:active {
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.options {
+    font-size: var(--font-size);
 }
 
 .customization {
+    width: 200px;
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
 .customization > * {
-    margin: 0 10px;
+    margin: 0 5px;
+    /* font-size: 20px; */
+    padding: 5px;
+    display: flex;
 }
 
 .container {
     perspective: 1500px;
-    margin: 100px auto;
+    margin: 50px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,26 +82,10 @@ button:hover {
     background-color: black;
     border: 1px solid gray;
     color: white;
-    /* background-color: #b7fddc;
-    border: 1px solid #ce0167;
-    color: #ce0167; */
-    /* background-color: #0f1f02;
-    border: 1px solid #8f74e3;
-    color: #8f74e3; */
-    /* background-color: #1b082c;
-    border: 1px solid #e77cd9;
-    color: #e77cd9; */
-    /* background-color: #11003e;
-    border: 1px solid #6ab7bc;
-    color: #6ab7bc; */
-    /* background-color: #370544;
-    border: 1px solid #408dd9;
-    color: #408dd9; */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: calc(var(--dice-size)/2);
-    /* opacity: .6; */
 }
 
 .black-dice {
@@ -168,13 +183,13 @@ button:hover {
 
 @media only screen and (min-width: 600px) {
     body {
-        --dice-size: 150px;
+        --dice-size: 100px;
     }
 }
 
 @media only screen and (min-width: 1200px) {
     body {
-        --dice-size: 300px;
+        --dice-size: 200px;
     }
 }
 
