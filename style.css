@@ -207,7 +207,7 @@ button:active {
     }
 
     .container {
-        margin: 70px auto;
+        margin: 85px auto 70px;
     }
 
     .customization > * {
