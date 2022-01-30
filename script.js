@@ -17,10 +17,12 @@ function displayInitialDiceNumber() {
     let numberOfDice = localStorage.getItem("number-of-dice");
     if (!numberOfDice) {
         numberOfDice = 2;
+        localStorage.setItem("number-of-dice", numberOfDice);
     }
     for (let i = 0; i < numberOfDice; i++) {
         $('.container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
     }
+    $(`.number-of-dice option[value=${numberOfDice}]`).attr('selected', '');
 };
 
 $(".number-of-dice").change(function(){
@@ -30,6 +32,7 @@ $(".number-of-dice").change(function(){
     for (let i = 0; i < newDiceNumber; i++) {
         $('.container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
     }
+    displayInitialDiceStyle();
 });
 
 displayInitialDiceStyle();
@@ -38,7 +41,9 @@ function displayInitialDiceStyle() {
     let style = localStorage.getItem("dice-style");
     if (!style) {
         style = "classic";
+        localStorage.setItem("style", style);
     }
+    $(`.style option[value=${style}]`).attr('selected', '');
     let backgroundColor = '';
     let borderColor = '';
     let numberColor = ''
@@ -58,7 +63,7 @@ function displayInitialDiceStyle() {
         borderColor = "#ce0167";
         numberColor = "#ce0167";
     }
-    if (style === "cool blues") {
+    if (style === "cool-blues") {
         backgroundColor = "#11003e";
         borderColor = "#6ab7bc";
         numberColor = "#6ab7bc";
@@ -95,7 +100,7 @@ $(".style").change(function(){
         borderColor = "#ce0167";
         numberColor = "#ce0167";
     }
-    if (style === "cool blues") {
+    if (style === "cool-blues") {
         backgroundColor = "#11003e";
         borderColor = "#6ab7bc";
         numberColor = "#6ab7bc";
@@ -116,8 +121,10 @@ function displayInitialModifier() {
     let modifierFromStorage = parseInt(localStorage.getItem("modifier"));
     if (!modifierFromStorage) {
         modifierFromStorage = 0;
+        localStorage.setItem("modifier", modifierFromStorage);
     }
     modifier = modifierFromStorage;
+    $(`.modifier option[value=${modifierFromStorage}]`).attr('selected', '');
 };
 
 $(".modifier").change(function(){
