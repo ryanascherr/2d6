@@ -1,14 +1,31 @@
-const cubeOne = $(".cube-one");
-const cubeTwo = $(".cube-two");
+// const cubeOne = $(".cube-one");
+// const cubeTwo = $(".cube-two");
 
 let isDiceOneLow = true;
 let isDiceTwoLow = true;
 let isDiceRolling = false;
 let roll = 0;
-let roll1 = 0;
-let roll2 = 0;
+// let roll1 = 0;
+// let roll2 = 0;
 let rollTime = 750;
 let modifier = 0;
+let numberOfDice = 1;
+
+displayInitialDiceNumber();
+
+function displayInitialDiceNumber() {
+    for (let i = 0; i < numberOfDice; i++) {
+        $('.container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
+    }
+}
+
+$(".number-of-dice").change(function(){
+    $(".cube").remove();
+    let newDiceNumber = parseInt(this.value);
+    for (let i = 0; i < newDiceNumber; i++) {
+        $('.container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
+    }
+});
 
 $(".style").change(function(){
     let style = this.value;
@@ -86,7 +103,7 @@ function rollAllDice() {
         let currentCube = this;
         let currentRoll = Math.floor(Math.random() * 6 + 1);
         let numberAsString = JSON.stringify(currentRoll);
-        
+
         roll+= currentRoll;
 
         if ($(currentCube).hasClass("low")) {
