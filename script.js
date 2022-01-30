@@ -12,26 +12,32 @@ displayInitialModifier();
 
 function displayInitialDiceNumber() {
     let numberOfDice = localStorage.getItem("number-of-dice");
+
     if (!numberOfDice) {
         numberOfDice = 2;
         localStorage.setItem("number-of-dice", numberOfDice);
     }
+
+    $(`.number-of-dice option[value=${numberOfDice}]`).attr('selected', '');
+
+    // Add html for however many dice have been selected
     for (let i = 0; i < numberOfDice; i++) {
         $('.container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
     }
-    $(`.number-of-dice option[value=${numberOfDice}]`).attr('selected', '');
 };
 
 function displayInitialDiceStyle() {
     let style = localStorage.getItem("dice-style");
+    let backgroundColor = '';
+    let borderColor = '';
+    let numberColor = '';
+
     if (!style) {
         style = "classic";
         localStorage.setItem("style", style);
     }
+
     $(`.style option[value=${style}]`).attr('selected', '');
-    let backgroundColor = '';
-    let borderColor = '';
-    let numberColor = ''
 
     if (style === "classic") {
         backgroundColor = "black";
@@ -58,6 +64,7 @@ function displayInitialDiceStyle() {
         borderColor = "black";
         numberColor = "black";
     }
+
     $(".face").css('background-color', backgroundColor);
     $(".face").css('border-color', borderColor);
     $(".face").css('color', numberColor);
@@ -65,26 +72,34 @@ function displayInitialDiceStyle() {
 
 function displayInitialModifier() {
     let modifierFromStorage = parseInt(localStorage.getItem("modifier"));
+
     if (!modifierFromStorage) {
         modifierFromStorage = 0;
         localStorage.setItem("modifier", modifierFromStorage);
     }
-    modifier = modifierFromStorage;
+
     $(`.modifier option[value=${modifierFromStorage}]`).attr('selected', '');
+
+    modifier = modifierFromStorage;
 };
 
 $(".number-of-dice").change(function(){
     $(".cube").remove();
+
     localStorage.setItem("number-of-dice", this.value);
+
     let newDiceNumber = parseInt(this.value);
+
     for (let i = 0; i < newDiceNumber; i++) {
         $('.container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
     }
+
     displayInitialDiceStyle();
 });
 
 $(".style").change(function(){
     localStorage.setItem("dice-style", this.value);
+
     let style = this.value;
     let backgroundColor = '';
     let borderColor = '';
@@ -115,6 +130,7 @@ $(".style").change(function(){
         borderColor = "black";
         numberColor = "black";
     }
+
     $(".face").css('background-color', backgroundColor);
     $(".face").css('border-color', borderColor);
     $(".face").css('color', numberColor);
@@ -122,14 +138,14 @@ $(".style").change(function(){
 
 $(".modifier").change(function(){
     let newModifier = parseInt(this.value);
+
     localStorage.setItem("modifier", this.value);
+
     modifier = newModifier;
 });
 
 $(".roll-btn").click(function() {
-    if (isDiceRolling) {
-        return;
-    }
+    if (isDiceRolling) return;
 
     isDiceRolling = true;
 
@@ -143,6 +159,7 @@ $(".roll-btn").click(function() {
 
 function rollAllDice() {
     roll = 0;
+
     $(".cube").each(function() {
         let currentCube = this;
         let currentRoll = Math.floor(Math.random() * 6 + 1);
@@ -165,11 +182,14 @@ function rollAllDice() {
 
 function displayResult() {
     const diceRollTotal = $(".total");
+
     setTimeout(function(){
       if (modifier == 0) {
           diceRollTotal.text(roll);
-      } else {
-          diceRollTotal.text(`${roll} + ${modifier} = ${roll + modifier}`);
-      }
+          return;
+      } 
+    
+      diceRollTotal.text(`${roll} + ${modifier} = ${roll + modifier}`);
+      
     }, rollTime);
 }
