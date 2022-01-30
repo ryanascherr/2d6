@@ -4,6 +4,7 @@ const cubeTwo = $(".cube-two");
 let isDiceOneLow = true;
 let isDiceTwoLow = true;
 let isDiceRolling = false;
+let roll = 0;
 let roll1 = 0;
 let roll2 = 0;
 let rollTime = 750;
@@ -62,23 +63,48 @@ $(".roll-btn").click(function() {
         isDiceRolling = false;
     }, rollTime);
 
-    roll1 = Math.floor(Math.random() * 6 + 1);
-    roll2 = Math.floor(Math.random() * 6 + 1);
+    // roll1 = Math.floor(Math.random() * 6 + 1);
+    // roll2 = Math.floor(Math.random() * 6 + 1);
 
-    resetClasses();
-    rollDiceOne();
-    rollDiceTwo();
+    // resetClasses();
+    rollAllDice();
+    // rollDiceOne();
+    // rollDiceTwo();
     showResult();
 })
 
-function resetClasses() {
-    $(cubeOne).removeClass();
-    $(cubeOne).addClass("cube cube-one");
-    $(cubeTwo).removeClass();
-    $(cubeTwo).addClass("cube cube-two");
+// function resetClasses() {
+//     $(cubeOne).removeClass();
+//     $(cubeOne).addClass("cube cube-one");
+//     $(cubeTwo).removeClass();
+//     $(cubeTwo).addClass("cube cube-two");
+// }
+
+function rollAllDice() {
+    roll = 0;
+    $(".cube").each(function() {
+        let currentCube = this;
+        let currentRoll = Math.floor(Math.random() * 6 + 1);
+        let numberAsString = JSON.stringify(currentRoll);
+        
+        roll+= currentRoll;
+
+        if ($(currentCube).hasClass("low")) {
+            $(currentCube).removeClass();
+            $(currentCube).addClass("cube high");
+            $(currentCube).addClass(`face-${numberAsString}-high`);
+            return;
+        }
+
+        $(currentCube).removeClass();
+        $(currentCube).addClass("cube low");
+        $(currentCube).addClass(`face-${numberAsString}-low`);
+    });
 }
 
 function rollDiceOne() {
+    roll1 = Math.floor(Math.random() * 6 + 1);
+
     let numberAsString = JSON.stringify(roll1);
 
     if (isDiceOneLow) {
@@ -108,9 +134,11 @@ function showResult() {
     const diceRollTotal = $(".total");
     setTimeout(function(){
       if (modifier == 0) {
-          diceRollTotal.text(roll1 + roll2);
+        //   diceRollTotal.text(roll1 + roll2);
+          diceRollTotal.text(roll);
       } else {
-          diceRollTotal.text(`${roll1 + roll2} + ${modifier} = ${roll1 + roll2 + modifier}`);
+        //   diceRollTotal.text(`${roll1 + roll2} + ${modifier} = ${roll1 + roll2 + modifier}`);
+          diceRollTotal.text(`${roll} + ${modifier} = ${roll + modifier}`);
       }
     }, rollTime);
 }
