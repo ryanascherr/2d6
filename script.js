@@ -22,12 +22,12 @@ function displayInitialDiceNumber() {
 
     // Add html for however many dice have been selected
     for (let i = 0; i < numberOfDice; i++) {
-        $('.container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
+        $('.dice-container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
     }
 };
 
 function displayInitialDiceStyle() {
-    let style = localStorage.getItem("dice-style");
+    let style = localStorage.getItem("style");
 
     if (!style) {
         style = "classic";
@@ -66,14 +66,14 @@ $(".number-of-dice").change(function(){
     let newDiceNumber = parseInt(this.value);
 
     for (let i = 0; i < newDiceNumber; i++) {
-        $('.container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
+        $('.dice-container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
     }
 
     displayInitialDiceStyle();
 });
 
 $(".style").change(function(){
-    localStorage.setItem("dice-style", this.value);
+    localStorage.setItem("style", this.value);
 
     let backgroundColor = $(this).find(':selected').data('bgc');
     let borderColor = $(this).find(':selected').data('bc');

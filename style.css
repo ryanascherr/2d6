@@ -1,3 +1,5 @@
+/* General */
+
 :root {
     --dice-size: 50px;
     --font-size: 16px;
@@ -12,19 +14,6 @@ h1, h2, h3 {
     margin: 0;
 }
 
-select {
-    background-color: white;
-    color: black;
-    padding: 2.5px;
-    border: 2px solid black;
-    font-size: var(--font-size);
-}
-
-.result-container {
-    font-size: var(--font-size);
-    margin-top: 10px;
-}
-
 button {
     padding: 10px;
     font-size: var(--font-size);
@@ -32,10 +21,6 @@ button {
     border: 2px solid black;
     color: black;
     border-radius: 10px;
-}
-
-.button-container {
-    margin: 20px 0;
 }
 
 button:hover {
@@ -49,25 +34,17 @@ button:active {
     transform: scale(1);
 }
 
-.options {
+select {
+    background-color: white;
+    color: black;
+    padding: 2.5px;
+    border: 2px solid black;
     font-size: var(--font-size);
 }
 
-.customization {
-    max-width: 300px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+/* Dice Container */
 
-.customization > * {
-    margin: 2.5px 0;
-    padding: 5px;
-    display: flex;
-}
-
-.container {
+.dice-container {
     perspective: 1500px;
     margin: 0 auto;
     display: flex;
@@ -75,7 +52,7 @@ button:active {
     align-items: center;
     flex-wrap: wrap;
 }
-  
+
 .cube {
     position: relative;
     transform-style: preserve-3d;
@@ -100,21 +77,30 @@ button:active {
     font-size: calc(var(--dice-size)/2);
 }
 
-.black-dice {
-    background-color: black;
+/* 3D Object Orientation */
+
+.front {
+    transform: rotateY(0deg) translateZ(calc(var(--dice-size)/2));
 }
 
-.dark-red-dice {
-    background-color: darkred;
+.back {
+    transform: rotateY(180deg) translateZ(calc(var(--dice-size)/2));
 }
 
-.dark-green-dice {
-    background-color: darkgreen;
+.bottom {
+    transform: rotateX(-90deg) translateZ(calc(var(--dice-size)/2));
 }
 
-.button-container, .result-container {
-    display: flex;
-    justify-content: center;
+.left {
+    transform: rotateY(-90deg) translateZ(calc(var(--dice-size)/2));
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(calc(var(--dice-size)/2));
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(calc(var(--dice-size)/2));
 }
 
 .face-1-low {
@@ -165,29 +151,43 @@ button:active {
     transform: rotateX(360deg) rotateY(540deg) rotateZ(0deg);
 }
 
-.front {
-    transform: rotateY(0deg) translateZ(calc(var(--dice-size)/2));
+/* Result and Button Container */
+
+.result-container {
+    font-size: var(--font-size);
+    margin-top: 10px;
 }
 
-.back {
-    transform: rotateY(180deg) translateZ(calc(var(--dice-size)/2));
+.button-container {
+    margin: 20px 0;
 }
 
-.bottom {
-    transform: rotateX(-90deg) translateZ(calc(var(--dice-size)/2));
+.button-container, .result-container {
+    display: flex;
+    justify-content: center;
 }
 
-.left {
-    transform: rotateY(-90deg) translateZ(calc(var(--dice-size)/2));
+/* Options */
+
+.options {
+    font-size: var(--font-size);
 }
 
-.right {
-    transform: rotateY(90deg) translateZ(calc(var(--dice-size)/2));
+.customization {
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.top {
-    transform: rotateX(90deg) translateZ(calc(var(--dice-size)/2));
+.customization > * {
+    margin: 2.5px 0;
+    padding: 5px;
+    display: flex;
 }
+
+/* Media Queries */
 
 @media only screen and (min-width: 700px) {
     body {
@@ -195,7 +195,7 @@ button:active {
         --font-size: 20px;
     }
 
-    .container {
+    .dice-container {
         margin: 15px auto;
     }
 
