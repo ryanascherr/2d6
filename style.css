@@ -7,6 +7,11 @@ body {
     font-family: sans-serif;
 }
 
+h1, h2, h3 {
+    padding: 0;
+    margin: 0;
+}
+
 select {
     background-color: white;
     color: black;
@@ -17,6 +22,7 @@ select {
 
 .result-container {
     font-size: var(--font-size);
+    margin-top: 10px;
 }
 
 button {
@@ -29,8 +35,7 @@ button {
 }
 
 .button-container {
-    margin: 20px 0 0;
-
+    margin: 20px 0;
 }
 
 button:hover {
@@ -64,7 +69,7 @@ button:active {
 
 .container {
     perspective: 1500px;
-    margin: 50px auto 0;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,7 +82,7 @@ button:active {
     width: var(--dice-size);
     height: var(--dice-size);
     transition: all .75s ease-out;
-    margin: 0 calc(var(--dice-size)/2) 40px;
+    margin: 25px;
 }
 
 .face {
@@ -191,11 +196,34 @@ button:active {
     }
 
     .container {
-        margin: 60px auto;
+        margin: 15px auto;
+    }
+
+    .cube {
+        margin: 40px;
     }
 
     .customization > * {
         margin: 5px 10px;
+    }
+
+    select {
+        min-width: 100px;
+        text-align: center;
+    }
+
+    .button-container {
+        margin: 30px 0;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    body {
+        --font-size: 26px;
+    }
+
+    .customization > * {
+        margin: 10px 20px;
     }
 
     .customization {
@@ -203,27 +231,11 @@ button:active {
     }
 
     select {
-        min-width: 100px;
-        text-align: center;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    body {
-        --dice-size: 200px;
-        --font-size: 26px;
-    }
-
-    .container {
-        margin: 85px auto 70px;
-    }
-
-    .customization > * {
-        margin: 10px 20px;
-    }
-
-    select {
         min-width: 200px;
+    }
+
+    .button-container {
+        margin: 40px 0;
     }
 }
 
