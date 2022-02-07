@@ -5,13 +5,14 @@ let roll = 0;
 let rollTime = 750;
 let modifier = 0;
 let numberOfDice = 1;
+let log = [];
 
 displayInitialDiceNumber();
 displayInitialDiceStyle();
 displayInitialModifier();
 
 function displayInitialDiceNumber() {
-    let numberOfDice = localStorage.getItem("number-of-dice");
+    numberOfDice = localStorage.getItem("number-of-dice");
 
     if (!numberOfDice) {
         numberOfDice = 2;
@@ -23,7 +24,7 @@ function displayInitialDiceNumber() {
     // Add html for however many dice have been selected
     for (let i = 0; i < numberOfDice; i++) {
         let face = Math.floor(Math.random() * 6 + 1);
-        
+
         $('.dice-container').append(`<div class="grow cube face-${face}-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>`);
     }
 };
@@ -65,9 +66,9 @@ $(".number-of-dice").change(function(){
 
     localStorage.setItem("number-of-dice", this.value);
 
-    let newDiceNumber = parseInt(this.value);
+    numberOfDice = parseInt(this.value);
 
-    for (let i = 0; i < newDiceNumber; i++) {
+    for (let i = 0; i < numberOfDice; i++) {
         let face = Math.floor(Math.random() * 6 + 1);
 
         $('.dice-container').append(`<div class="cube face-${face}-low low grow"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>`);
@@ -138,10 +139,23 @@ function displayResult() {
     setTimeout(function(){
       if (modifier == 0) {
           diceRollTotal.text(roll);
+          addToLog();
           return;
       } 
     
       diceRollTotal.text(`${roll} + ${modifier} = ${roll + modifier}`);
+
+      addToLog();
       
     }, rollTime);
+}
+
+function addToLog() {
+
+    if (modifier == 0) {
+        $('.log').prepend(`<h3 class="log-item">Roll ${numberOfDice}d6 = ${roll}<h3>`);
+        return;
+    }
+
+    $('.log').prepend(`<h3 class="log-item">Roll ${numberOfDice}d6 + ${modifier} = ${roll + modifier}<h3>`);
 }
