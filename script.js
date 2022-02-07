@@ -22,7 +22,9 @@ function displayInitialDiceNumber() {
 
     // Add html for however many dice have been selected
     for (let i = 0; i < numberOfDice; i++) {
-        $('.dice-container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
+        let face = Math.floor(Math.random() * 6 + 1);
+        
+        $('.dice-container').append(`<div class="grow cube face-${face}-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>`);
     }
 };
 
@@ -66,7 +68,9 @@ $(".number-of-dice").change(function(){
     let newDiceNumber = parseInt(this.value);
 
     for (let i = 0; i < newDiceNumber; i++) {
-        $('.dice-container').append('<div class="cube face-2-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>');
+        let face = Math.floor(Math.random() * 6 + 1);
+
+        $('.dice-container').append(`<div class="cube face-${face}-low low grow"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>`);
     }
 
     displayInitialDiceStyle();

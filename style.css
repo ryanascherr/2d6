@@ -53,6 +53,24 @@ select {
     flex-wrap: wrap;
 }
 
+/* .grow {
+    animation-name: grow;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-direction: forwards;
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+} */
+
 .cube {
     position: relative;
     transform-style: preserve-3d;
@@ -75,6 +93,7 @@ select {
     justify-content: center;
     align-items: center;
     font-size: calc(var(--dice-size)/2);
+    /* transition: .5s; */
 }
 
 /* 3D Object Orientation */
