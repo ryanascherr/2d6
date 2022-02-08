@@ -6,6 +6,7 @@ let rollTime = 750;
 let modifier = 0;
 let numberOfDice = 1;
 let log = [];
+let isLogShown = true;
 
 displayInitialDiceNumber();
 displayInitialDiceStyle();
@@ -108,7 +109,7 @@ $(".roll-btn").click(function() {
 
     rollAllDice();
     displayResult();
-})
+});
 
 function rollAllDice() {
     roll = 0;
@@ -159,3 +160,19 @@ function addToLog() {
 
     $('.log').prepend(`<h3 class="log-item">Roll ${numberOfDice}d6 + ${modifier} = ${roll + modifier}<h3>`);
 }
+
+$(".log-toggle").click(function() {
+
+    if (isLogShown) {
+        $(".log").addClass("hidden");
+        $(".log-toggle").html("&#8593;");
+        isLogShown = false;
+        return;
+    }
+
+    $(".log").removeClass("hidden");
+    $(".log-toggle").html("&#8595;")
+
+    isLogShown = true;
+
+})

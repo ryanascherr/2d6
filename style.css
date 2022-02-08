@@ -43,6 +43,10 @@ select {
     font-size: var(--font-size);
 }
 
+.hidden {
+    display: none;
+}
+
 /* Dice Container */
 
 .dice-container {
@@ -210,8 +214,8 @@ select {
 /* Log */
 
 .log-container {
-    width: 150px;
-    height: 150px;
+    max-width: 150px;
+    max-height: 150px;
     background-color: white;
     position: fixed;
     bottom: 10px;
@@ -220,7 +224,6 @@ select {
     flex-direction: column;
     /* justify-content: center; */
     align-items: start;
-    overflow: hidden;
     color: black;
     border: 2px solid black;
     /* padding: 5px; */
@@ -236,6 +239,21 @@ select {
     padding: 10px 0;
     margin: 0;
     position: relative;
+}
+
+.log-toggle {
+    padding: 0 5px;
+    transition: .5s;
+}
+
+.log-toggle:hover {
+    cursor: pointer;
+}
+
+.log {
+    overflow: scroll;
+    width: 100%;
+    transition: .5s;
 }
 
 .log-item {
