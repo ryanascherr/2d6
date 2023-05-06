@@ -1,106 +1,92 @@
-let isDiceOneLow = true;
-let isDiceTwoLow = true;
 let isDiceRolling = false;
 let roll = 0;
 let rollTime = 750;
 let modifier = 0;
-let numberOfDice = 1;
+let numberOfDice = 2;
 let log = [];
 let isLogShown = true;
+let style = "classic";
 
-displayInitialDiceNumber();
-displayInitialDiceStyle();
-displayInitialModifier();
-
-function displayInitialDiceNumber() {
+getDiceNumber();
+function getDiceNumber() {
     numberOfDice = localStorage.getItem("number-of-dice");
 
     if (!numberOfDice) {
         numberOfDice = 2;
         localStorage.setItem("number-of-dice", numberOfDice);
     }
+}
 
+setDiceNumber();
+function setDiceNumber() {
     $(`.number-of-dice option[value=${numberOfDice}]`).attr('selected', '');
 
-    // Add html for however many dice have been selected
     for (let i = 0; i < numberOfDice; i++) {
         let face = Math.floor(Math.random() * 6 + 1);
 
         $('.dice-container').append(`<div class="grow cube face-${face}-low low"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>`);
     }
-};
+}
 
-function displayInitialDiceStyle() {
-    let style = localStorage.getItem("style");
+getDiceStyle();
+function getDiceStyle() {
+    style = localStorage.getItem("style");
 
     if (!style) {
         style = "classic";
         localStorage.setItem("style", style);
     }
+}
 
+setDiceStyle();
+function setDiceStyle() {
     $(`.style option[value=${style}]`).attr('selected', '');
 
     let backgroundColor = $(".style").find(':selected').data('bgc');
     let borderColor = $(".style").find(':selected').data('bc');
     let numberColor = $(".style").find(':selected').data('nc');
 
-    $(".face").css('background-color', backgroundColor);
-    $(".face").css('border-color', borderColor);
-    $(".face").css('color', numberColor);
+    $(".face").css({'background-color': backgroundColor, 'border-color' : borderColor, 'color': numberColor});
 }
 
-function displayInitialModifier() {
-    let modifierFromStorage = parseInt(localStorage.getItem("modifier"));
+getDiceModifier();
+function getDiceModifier() {
+    modifier = parseInt(localStorage.getItem("modifier"));
 
-    if (!modifierFromStorage) {
-        modifierFromStorage = 0;
-        localStorage.setItem("modifier", modifierFromStorage);
+    if (!modifier) {
+        modifier = 0;
+        localStorage.setItem("modifier", modifier);
     }
+}
 
-    $(`.modifier option[value=${modifierFromStorage}]`).attr('selected', '');
-
-    modifier = modifierFromStorage;
-};
+setDiceModifier();
+function setDiceModifier() {
+    $(`.modifier option[value=${modifier}]`).attr('selected', '');
+}
 
 $(".number-of-dice").change(function(){
-    $(".cube").remove();
-
     localStorage.setItem("number-of-dice", this.value);
-
-    numberOfDice = parseInt(this.value);
-
-    for (let i = 0; i < numberOfDice; i++) {
-        let face = Math.floor(Math.random() * 6 + 1);
-
-        $('.dice-container').append(`<div class="cube face-${face}-low low grow"><div class="face front">1</div><div class="face back">6</div><div class="face bottom">2</div><div class="face left">3</div><div class="face right">4</div><div class="face top">5</div></div>`);
-    }
-
-    displayInitialDiceStyle();
+    $(".dice-container").empty();
+    getDiceNumber();
+    setDiceNumber();
+    getDiceStyle();
+    setDiceStyle();
 });
 
 $(".style").change(function(){
     localStorage.setItem("style", this.value);
-
-    let backgroundColor = $(this).find(':selected').data('bgc');
-    let borderColor = $(this).find(':selected').data('bc');
-    let numberColor = $(this).find(':selected').data('nc');
-
-    $(".face").css('background-color', backgroundColor);
-    $(".face").css('border-color', borderColor);
-    $(".face").css('color', numberColor);
+    getDiceStyle();
+    setDiceStyle();
 });
 
 $(".modifier").change(function(){
-    let newModifier = parseInt(this.value);
-
     localStorage.setItem("modifier", this.value);
-
-    modifier = newModifier;
+    getDiceModifier();
+    setDiceModifier();
 });
 
 $(".roll-btn").click(function() {
     if (isDiceRolling) return;
-
     isDiceRolling = true;
 
     setTimeout(function(){
@@ -119,19 +105,18 @@ function rollAllDice() {
         let currentRoll = Math.floor(Math.random() * 6 + 1);
         let numberAsString = JSON.stringify(currentRoll);
 
-        roll+= currentRoll;
+        roll += currentRoll;
 
         if ($(currentCube).hasClass("low")) {
             $(currentCube).removeClass();
             $(currentCube).addClass("cube high");
             $(currentCube).addClass(`face-${numberAsString}-high`);
-            return;
+        } else {
+            $(currentCube).removeClass();
+            $(currentCube).addClass("cube low");
+            $(currentCube).addClass(`face-${numberAsString}-low`);
         }
-
-        $(currentCube).removeClass();
-        $(currentCube).addClass("cube low");
-        $(currentCube).addClass(`face-${numberAsString}-low`);
-    });
+    })
 }
 
 function displayResult() {
@@ -139,40 +124,34 @@ function displayResult() {
 
     setTimeout(function(){
       if (modifier == 0) {
-          diceRollTotal.text(roll);
-          addToLog();
-          return;
-      } 
-    
-      diceRollTotal.text(`${roll} + ${modifier} = ${roll + modifier}`);
-
-      addToLog();
-      
+        diceRollTotal.text(roll);
+      } else {
+        diceRollTotal.text(`${roll} + ${modifier} = ${roll + modifier}`);
+      }
+      addToLog(); 
     }, rollTime);
 }
 
 function addToLog() {
-
     if (modifier == 0) {
         $('.log').prepend(`<h3 class="log-item">Roll ${numberOfDice}d6 = ${roll}<h3>`);
-        return;
+    } else {
+        $('.log').prepend(`<h3 class="log-item">Roll ${numberOfDice}d6 + ${modifier} = ${roll + modifier}<h3>`);
     }
-
-    $('.log').prepend(`<h3 class="log-item">Roll ${numberOfDice}d6 + ${modifier} = ${roll + modifier}<h3>`);
 }
 
 $(".log-toggle").click(function() {
+    toggleLog();
+})
 
+function toggleLog() {
     if (isLogShown) {
         $(".log").addClass("hidden");
         $(".log-toggle").html("&#8593;");
         isLogShown = false;
-        return;
+    } else {
+        $(".log").removeClass("hidden");
+        $(".log-toggle").html("&#8595;")
+        isLogShown = true;
     }
-
-    $(".log").removeClass("hidden");
-    $(".log-toggle").html("&#8595;")
-
-    isLogShown = true;
-
-})
+}
